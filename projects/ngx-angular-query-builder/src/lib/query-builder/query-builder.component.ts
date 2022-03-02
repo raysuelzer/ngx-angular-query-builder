@@ -47,7 +47,8 @@ import {
   SimpleChanges,
   TemplateRef,
   ViewChild,
-  ElementRef
+  ElementRef,
+  HostBinding
 } from '@angular/core';
 
 export const CONTROL_VALUE_ACCESSOR: any = {
@@ -113,6 +114,11 @@ export class QueryBuilderComponent implements OnChanges, ControlValueAccessor, V
   };
   @Input() disabled = false;
   @Input() data: RuleSet = { condition: 'add', rules: [] };
+
+
+  @HostBinding('attr.query-builder-condition') get condintion() {
+    return this.data?.condition;
+  }
 
   // For ControlValueAccessor interface
   public onChangeCallback!: () => void;
