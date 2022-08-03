@@ -113,7 +113,7 @@ export class QueryBuilderComponent implements OnChanges, ControlValueAccessor, V
     boolean: ['=']
   };
   @Input() disabled = false;
-  @Input() data: RuleSet = { condition: 'add', rules: [] };
+  @Input() data: RuleSet = { condition: 'and', rules: [] };
 
 
   @HostBinding('attr.query-builder-condition') get condintion() {
@@ -129,7 +129,7 @@ export class QueryBuilderComponent implements OnChanges, ControlValueAccessor, V
   @Input() emptyMessage = 'A ruleset cannot be empty. Please add a rule or remove it all together.';
   @Input() classNames: QueryBuilderClassNames = {};
   @Input() operatorMap: { [key: string]: string[] } = {};
-  @Input() parentValue: RuleSet = { condition: 'add', rules: [] };
+  @Input() parentValue: RuleSet = { condition: 'and', rules: [] };
   @Input() config: QueryBuilderConfig = { fields: {} };
   @Input() parentArrowIconTemplate!: QueryArrowIconDirective;
   @Input() parentInputTemplates!: QueryList<QueryInputDirective>;
@@ -234,7 +234,7 @@ export class QueryBuilderComponent implements OnChanges, ControlValueAccessor, V
   }
   set value(value: RuleSet) {
     // When component is initialized without a formControl, null is passed to value
-    this.data = value || { condition: 'add', rules: [] };
+    this.data = value || { condition: 'and', rules: [] };
     this.handleDataChange();
   }
 
@@ -444,7 +444,7 @@ export class QueryBuilderComponent implements OnChanges, ControlValueAccessor, V
     if (this.config.addRuleSet) {
       this.config.addRuleSet(parent);
     } else {
-      parent.rules = parent.rules.concat([{ condition: 'add', rules: [] }]);
+      parent.rules = parent.rules.concat([{ condition: 'and', rules: [] }]);
     }
 
     this.handleTouched();
