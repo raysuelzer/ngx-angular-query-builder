@@ -95,7 +95,7 @@ export interface QueryBuilderConfig {
   getOptions?: (field: string) => Option[];
   addRuleSet?: (parent: RuleSet) => void;
   addRule?: (parent: RuleSet) => void;
-  removeRuleSet?: (ruleset: RuleSet, parent: RuleSet) => void;
+  removeRuleSet?: (ruleset: RuleSet, parent?: RuleSet) => void;
   removeRule?: (rule: Rule, parent: RuleSet) => void;
   coerceValueForOperator?: (operator: string, value: any, rule: Rule) => any;
   calculateFieldChangeValue?: (currentField: Field,

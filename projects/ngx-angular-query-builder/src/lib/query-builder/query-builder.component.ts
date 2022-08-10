@@ -129,7 +129,7 @@ export class QueryBuilderComponent implements OnChanges, ControlValueAccessor, V
   @Input() emptyMessage = 'A ruleset cannot be empty. Please add a rule or remove it all together.';
   @Input() classNames: QueryBuilderClassNames = {};
   @Input() operatorMap: { [key: string]: string[] } = {};
-  @Input() parentValue: RuleSet = { condition: 'and', rules: [] };
+  @Input() parentValue?: RuleSet;
   @Input() config: QueryBuilderConfig = { fields: {} };
   @Input() parentArrowIconTemplate!: QueryArrowIconDirective;
   @Input() parentInputTemplates!: QueryList<QueryInputDirective>;
@@ -460,7 +460,7 @@ export class QueryBuilderComponent implements OnChanges, ControlValueAccessor, V
     parent = parent || this.parentValue;
     if (this.config.removeRuleSet) {
       this.config.removeRuleSet(ruleset, parent);
-    } else {
+    } else if (parent) {
       parent.rules = parent.rules.filter((r) => r !== ruleset);
     }
 
