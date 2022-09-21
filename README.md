@@ -1,9 +1,8 @@
 # NgxAngularQueryBuilder
 
-The goal of this project is to enable Angular 12+ support for the original [angular2-query-builder](https://github.com/designermanjeets/Angular-QueryBuilder). It is *not* production ready. This project may not be maintained. Should the original project become active again, this library may be abandoned.
+The goal of this project is to enable Angular 12+ support for the original [angular2-query-builder](https://github.com/zebzhao/Angular-QueryBuilder). It is *not* production ready. This project may not be maintained. Should the original project become active again, this library may be abandoned.
 
-This project uses code from https://github.com/designermanjeets/Angular-QueryBuilder
-which in turn is a fork from https://github.com/zebzhao/Angular-QueryBuilder both developed under the MIT License.
+This project uses code from https://github.com/designermanjeets/Angular-QueryBuilder a fork of https://github.com/zebzhao/Angular-QueryBuilder both developed under the MIT License.
 
 # Examples
 
