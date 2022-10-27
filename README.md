@@ -4,6 +4,14 @@ The goal of this project is to enable Angular 12+ support for the original [angu
 
 This project uses code from https://github.com/designermanjeets/Angular-QueryBuilder a fork of https://github.com/zebzhao/Angular-QueryBuilder both developed under the MIT License.
 
+# Versions
+
+Use the following versions depending upon your angular version
+
+Angular 12 & 13 - Versions ^0.0.5
+Angular 13 - Versions 13.x.x
+Angular 14 - Versions 14.x.x
+
 # Examples
 
 npm install ngx-angular-query-builder
