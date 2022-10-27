@@ -10,3 +10,6 @@ Credit: @ravijoshi007
 - Add a change log
 ### 0.0.5
 - Fix remove RuleSet button being non functional when there are no RuleSets to remove https://github.com/raysuelzer/ngx-angular-query-builder/pull/7 Credit: @michaelharrington
+
+### 13.0.0
+- Angular 13 Upgrade
