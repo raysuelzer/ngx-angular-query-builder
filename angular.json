@@ -138,6 +138,5 @@
         }
       }
     }
-  },
-  "defaultProject": "ngx-angular-query-builder"
+  }
 }
