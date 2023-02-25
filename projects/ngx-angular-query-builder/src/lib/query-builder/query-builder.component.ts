@@ -791,7 +791,7 @@ export class QueryBuilderComponent implements OnChanges, ControlValueAccessor, V
           return this.validateRulesInRuleset(item as RuleSet, errorStore);
         } else if ((item as Rule).field) {
           const field = this.config.fields[(item as Rule).field];
-          if (field && field.validator && field.validator.apply) {
+          if (field && field.validator) {
             const error = field.validator(item as Rule, ruleset);
             if (error != null) {
               errorStore.push(error);

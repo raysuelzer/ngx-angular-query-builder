@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormControl } from '@angular/forms';
+import { MatFormFieldAppearance } from '@angular/material/form-field';
 
 import {
   QueryBuilderClassNames, QueryBuilderConfig
@@ -7,182 +8,8 @@ import {
 
 @Component({
   selector: 'app-root',
-  template: `
-  <h2>Vanilla</h2>
-  <br>
-  <query-builder [formControl]='queryCtrl' [config]='currentConfig' [allowRuleset]='allowRuleset' [allowCollapse]='allowCollapse' [persistValueOnFieldChange]='persistValueOnFieldChange'>
-    <ng-container *queryInput="let rule; type: 'textarea'; let getDisabledState=getDisabledState">
-      <textarea class="text-input text-area" [(ngModel)]="rule.value" [disabled]=getDisabledState()
-        placeholder="Custom Textarea"></textarea>
-    </ng-container>
-  </query-builder>
-  <br>
-  <div>
-    <div class="row">
-      <p class="col-6">Control Valid (Vanilla): {{ queryCtrl.valid }}</p>
-      <div class="col-6">
-        <label><input type="checkbox" (change)=switchModes($event)>Entity Mode</label>
-      </div>
-    </div>
-    <div class="row">
-      <p class="col-6">Control Touched (Vanilla): {{ queryCtrl.touched }}</p>
-      <div class="col-6">
-        <label><input type="checkbox" (change)=changeDisabled($event)>Disabled</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-6">
-        <label><input type="checkbox" [(ngModel)]='allowRuleset'>Allow Ruleset</label>
-      </div>
-      <div class="col-6">
-        <label><input type="checkbox" [(ngModel)]='allowCollapse'>Allow Collapse</label>
-      </div>
-      <div class="col-6">
-        <label><input type="checkbox" [(ngModel)]='persistValueOnFieldChange'>Persist Values on Field Change</label>
-      </div>
-    </div>
-    <textarea class="output">{{query | json}}</textarea>
-  </div>
-  <br>
-  <h2>Custom Material</h2>
-  <br>
-  <mat-card>
-  <query-builder [(ngModel)]='query' [config]='currentConfig' [allowRuleset]='allowRuleset' [allowCollapse]='allowCollapse' [persistValueOnFieldChange]='persistValueOnFieldChange'>
-    <ng-container *queryButtonGroup="let ruleset; let addRule=addRule; let addRuleSet=addRuleSet; let removeRuleSet=removeRuleSet">
-      <button type="button" mat-icon-button color="primary" (click)="addRule()">
-        <mat-icon>add</mat-icon></button>
-      <button type="button" mat-icon-button color="primary" *ngIf="addRuleSet" (click)="addRuleSet()">
-        <mat-icon>add_circle_outline</mat-icon></button>
-      <button type="button" mat-icon-button color="accent" *ngIf="removeRuleSet" (click)="removeRuleSet()">
-        <mat-icon>remove_circle_outline</mat-icon></button>
-    </ng-container>
-    <ng-container *queryArrowIcon>
-      <mat-icon ngClass="mat-arrow-icon">chevron_right</mat-icon>
-    </ng-container>
-    <ng-container *queryRemoveButton="let rule; let removeRule=removeRule">
-      <button type="button" mat-icon-button color="accent" (click)="removeRule(rule)">
-        <mat-icon>remove</mat-icon>
-      </button>
-    </ng-container>
-    <ng-container *querySwitchGroup="let ruleset; let onChange=onChange">
-      <mat-radio-group *ngIf="ruleset" [(ngModel)]="ruleset.condition" (ngModelChange)="onChange($event)">
-        <mat-radio-button [style.padding.px]="10" value="and">And</mat-radio-button>
-        <mat-radio-button [style.padding.px]="10" value="or">Or</mat-radio-button>
-      </mat-radio-group>
-    </ng-container>
-    <ng-container *queryEntity="let rule; let entities=entities; let onChange=onChange">
-      <mat-form-field>
-        <mat-select [(ngModel)]="rule.entity" (ngModelChange)="onChange($event, rule)">
-          <mat-option *ngFor="let entity of entities" [value]="entity.value">
-          {{entity.name}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </ng-container>
-    <ng-container *queryField="let rule; let fields=fields; let onChange=onChange; let getFields = getFields">
-      <mat-form-field>
-        <mat-select [(ngModel)]="rule.field" (ngModelChange)="onChange($event, rule)">
-          <mat-option *ngFor="let field of getFields(rule.entity)" [value]="field.value">
-            {{ field.name }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </ng-container>
-    <ng-container *queryOperator="let rule; let operators=operators; let onChange=onChange">
-      <mat-form-field [style.width.px]="90">
-        <mat-select [(ngModel)]="rule.operator" (ngModelChange)="onChange(rule)">
-          <mat-option *ngFor="let value of operators" [value]="value">
-            {{ value }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </ng-container>
-    <ng-container *queryInput="let rule; type: 'boolean'; let onChange=onChange">
-      <mat-checkbox [(ngModel)]="rule.value" (ngModelChange)="onChange()"></mat-checkbox>
-    </ng-container>
-    <ng-container *queryInput="let rule; let field=field; let options=options; type: 'category'; let onChange=onChange">
-      <mat-form-field>
-        <mat-select [(ngModel)]="rule.value" (ngModelChange)="onChange()">
-          <mat-option *ngFor="let opt of options" [value]="opt.value">
-            {{ opt.name }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </ng-container>
-    <ng-container *queryInput="let rule; type: 'date'; let onChange=onChange">
-      <mat-form-field>
-        <input matInput [matDatepicker]="picker" [(ngModel)]="rule.value" (ngModelChange)="onChange()">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-    </ng-container>
-    <ng-container *queryInput="let rule; let options=options; type: 'multiselect'; let onChange=onChange">
-      <mat-form-field [style.width.px]="300">
-        <mat-select [(ngModel)]="rule.value" multiple (ngModelChange)="onChange()">
-          <mat-option *ngFor="let opt of options" [value]="opt.value">
-            {{ opt.name }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </ng-container>
-    <ng-container *queryInput="let rule; let field=field; type: 'number'; let onChange=onChange">
-      <mat-form-field [style.width.px]="50">
-        <input matInput [(ngModel)]="rule.value" type="number" (ngModelChange)="onChange()">
-      </mat-form-field>
-    </ng-container>
-    <ng-container *queryInput="let rule; let field=field; type: 'string'; let onChange=onChange">
-      <mat-form-field>
-        <input matInput [(ngModel)]="rule.value" (ngModelChange)="onChange()">
-      </mat-form-field>
-    </ng-container>
-    <ng-container *queryInput="let rule; let field=field; type: 'textarea'; let onChange=onChange">
-      <mat-form-field>
-        <textarea matInput [(ngModel)]="rule.value" (ngModelChange)="onChange()">
-        </textarea>
-      </mat-form-field>
-    </ng-container>
-  </query-builder>
-  </mat-card>
-  <br>
-  <h2>Bootstrap</h2>
-  <br>
-  <query-builder [(ngModel)]='query' [classNames]='bootstrapClassNames' [config]='currentConfig' [allowRuleset]='allowRuleset' [allowCollapse]='allowCollapse' [persistValueOnFieldChange]='persistValueOnFieldChange'>
-    <div class="col-auto" *queryInput="let rule; type: 'textarea'">
-      <textarea class="form-control" [(ngModel)]="rule.value"
-        placeholder="Custom Textarea"></textarea>
-    </div>
-  </query-builder>
-  `,
-  styles: [`
-  ::ng-deep html {
-    font: 14px sans-serif;
-    margin: 30px;
-  }
-  .mat-icon-button {
-    outline: none;
-  }
-  .mat-arrow-icon {
-    outline: none;
-    line-height: 32px;
-  }
-  .mat-form-field {
-    padding-left: 5px;
-    padding-right: 5px;
-  }
-  .text-input {
-    padding: 4px 8px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-  }
-  .text-area {
-    width: 300px;
-    height: 100px;
-  }
-  .output {
-    width: 100%;
-    height: 300px;
-  }
-  `]
+  templateUrl: 'app.component.html',
+  styleUrls: ['app.component.scss']
 })
 export class AppComponent {
   public queryCtrl: UntypedFormControl;
@@ -305,6 +132,7 @@ export class AppComponent {
   public allowRuleset: boolean = true;
   public allowCollapse!: boolean;
   public persistValueOnFieldChange: boolean = false;
+  appearance: MatFormFieldAppearance = 'outline';
 
   constructor(
     private formBuilder: UntypedFormBuilder
