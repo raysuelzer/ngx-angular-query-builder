@@ -15,3 +15,5 @@ Credit: @ravijoshi007
 - Angular 13 Upgrade
 ### 14.0.0
 - Angular 14 Upgrade
+### 15.0.0
+ - Angular 15 upgrade
