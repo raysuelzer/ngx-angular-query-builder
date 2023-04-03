@@ -8,9 +8,10 @@ This project uses code from https://github.com/designermanjeets/Angular-QueryBui
 
 Use the following versions depending upon your angular version
 
-Angular 12 & 13 - Versions ^0.0.5
-Angular 13 - Versions 13.x.x
-Angular 14 - Versions 14.x.x
+- Angular 12 & 13 - Versions ^0.0.5
+- Angular 13 - Versions 13.x.x
+- Angular 14 - Versions 14.x.x
+- Angular 15 - Versions 14.x.x
 
 # Examples
 
