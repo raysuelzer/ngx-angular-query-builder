@@ -1,0 +1,32 @@
+::ng-deep html {
+  font: 14px sans-serif;
+  margin: 30px;
+}
+.mat-mdc-icon-button {
+  outline: none;
+}
+.mat-arrow-icon {
+  outline: none;
+  line-height: 32px;
+}
+.mat-mdc-form-field {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.text-input {
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+.text-area {
+  width: 300px;
+  height: 100px;
+}
+.output {
+  width: 100%;
+  height: 300px;
+}
+
+.mat-mdc-radio-button label {
+    margin: 0;
+}
