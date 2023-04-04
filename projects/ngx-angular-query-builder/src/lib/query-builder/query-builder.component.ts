@@ -144,7 +144,7 @@ export class QueryBuilderComponent implements OnChanges, ControlValueAccessor, V
   @Input() parentTouchedCallback!: () => void;
   @Input() persistValueOnFieldChange = false;
 
-  @ViewChild('treeContainer', {static: true}) treeContainer!: ElementRef;
+  @ViewChild('treeContainer', { static: true }) treeContainer!: ElementRef;
 
   @ContentChild(QueryButtonGroupDirective) buttonGroupTemplate!: QueryButtonGroupDirective;
   @ContentChild(QuerySwitchGroupDirective) switchGroupTemplate!: QuerySwitchGroupDirective;
@@ -153,7 +153,7 @@ export class QueryBuilderComponent implements OnChanges, ControlValueAccessor, V
   @ContentChild(QueryOperatorDirective) operatorTemplate!: QueryOperatorDirective;
   @ContentChild(QueryRemoveButtonDirective) removeButtonTemplate!: QueryRemoveButtonDirective;
   @ContentChild(QueryEmptyWarningDirective) emptyWarningTemplate!: QueryEmptyWarningDirective;
-  @ContentChildren(QueryInputDirective, {descendants: true}) inputTemplates!: QueryList<QueryInputDirective>;
+  @ContentChildren(QueryInputDirective, { descendants: true }) inputTemplates!: QueryList<QueryInputDirective>;
   @ContentChild(QueryArrowIconDirective) arrowIconTemplate!: QueryArrowIconDirective;
 
   private defaultTemplateTypes: string[] = [
@@ -192,7 +192,7 @@ export class QueryBuilderComponent implements OnChanges, ControlValueAccessor, V
       });
       if (config.entities) {
         this.entities = Object.keys(config.entities).map((value) => {
-          const entity = config.entities ? config.entities[value]: [] as any;
+          const entity = config.entities ? config.entities[value] : [] as any;
           entity.value = entity.value || value;
           return entity;
         });
@@ -274,7 +274,7 @@ export class QueryBuilderComponent implements OnChanges, ControlValueAccessor, V
   }
 
   findQueryInput(type: string): QueryInputDirective {
-    const templates = this.parentInputTemplates || this.inputTemplates;
+    const templates = this.parentInputTemplates || this.inputTemplates || [];
     return templates.find((item) => item.queryInputType === type) as QueryInputDirective;
   }
 
@@ -355,7 +355,7 @@ export class QueryBuilderComponent implements OnChanges, ControlValueAccessor, V
     const clsLookup = this.classNames ? this.classNames : this.defaultClassNames as any;
     const defaultClassNames = this.defaultClassNames as any;
     const classNames = args.map((id: any) => clsLookup[id] || defaultClassNames[id]).filter((c: any) => !!c);
-    return classNames.length ? classNames.join(' ')  : [];
+    return classNames.length ? classNames.join(' ') : [];
   }
 
   getDefaultField(entity: Entity): Field | null {
