@@ -2,6 +2,8 @@
 
 The goal of this project is to enable Angular 12+ support for the original [angular2-query-builder](https://github.com/zebzhao/Angular-QueryBuilder). It is *not* production ready. This project may not be maintained. Should the original project become active again, this library may be abandoned.
 
+## I suggest forking this project if it is critical to your project because I may not update this regularly. If you want to contribute to maintaining this project open an issue. 
+
 This project uses code from https://github.com/designermanjeets/Angular-QueryBuilder a fork of https://github.com/zebzhao/Angular-QueryBuilder both developed under the MIT License.
 
 # Versions
