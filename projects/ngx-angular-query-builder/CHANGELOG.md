@@ -19,3 +19,7 @@ Credit: @ravijoshi007
  - Angular 15 upgrade
  ### 15.0.1
  - Angular 15 seems to have a subtle change which causes the templates to not be loaded into the query list when it first looks for them. Worked around by defaulting if these are undefined: this.parentInputTemplates || this.inputTemplates
+ -
+
+ ### 16.0.0
+- Angular 16 version. (not fully tested, thanks mperezd)
