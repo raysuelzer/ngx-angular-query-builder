@@ -4,9 +4,10 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build-demo": "ng build demo",
     "build-package": "ng build ngx-angular-query-builder",
-    "watch": "ng build --watch --configuration development",
+    "watch-package": "ng build ngx-angular-query-builder --watch --configuration development",
+    "watch-demo": "ng build demo --watch --configuration development",
     "test": "ng test"
   },
   "private": true,
@@ -34,9 +35,11 @@
     "jasmine-core": "5.1.1",
     "karma": "6.4.2",
     "karma-chrome-launcher": "3.2.0",
+    "karma-coverage": "^2.2.1",
     "karma-coverage-istanbul-reporter": "3.0.3",
     "karma-jasmine": "5.1.0",
     "karma-jasmine-html-reporter": "2.1.0",
+    "karma-spec-reporter": "^0.0.36",
     "ng-packagr": "17.0.3",
     "typescript": "5.2.2"
   }
