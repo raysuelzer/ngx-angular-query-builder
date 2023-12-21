@@ -18,9 +18,7 @@ import { NgxAngularQueryBuilderModule } from 'projects/ngx-angular-query-builder
 import { AppComponent } from './app.component';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     FormsModule,
@@ -36,9 +34,9 @@ import { AppComponent } from './app.component';
     MatNativeDateModule,
     MatButtonModule,
     BrowserAnimationsModule,
-    NgxAngularQueryBuilderModule
+    NgxAngularQueryBuilderModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
