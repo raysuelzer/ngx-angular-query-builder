@@ -7,13 +7,7 @@
   [allowCollapse]="allowCollapse"
   [persistValueOnFieldChange]="persistValueOnFieldChange"
 >
-  <ng-container
-    *queryInput="
-      let rule;
-      type: 'textarea';
-      let getDisabledState = getDisabledState
-    "
-  >
+  <ng-container *queryInput="let rule; type: 'textarea'; let getDisabledState = getDisabledState">
     <textarea
       class="text-input text-area"
       [(ngModel)]="rule.value"
@@ -27,42 +21,26 @@
   <div class="row">
     <p class="col-6">Control Valid (Vanilla): {{ queryCtrl.valid }}</p>
     <div class="col-6">
-      <label
-        ><input type="checkbox" (change)="switchModes($event)" />Entity
-        Mode</label
-      >
+      <label><input type="checkbox" (change)="switchModes($event)" />Entity Mode</label>
     </div>
   </div>
   <div class="row">
     <p class="col-6">Control Touched (Vanilla): {{ queryCtrl.touched }}</p>
     <div class="col-6">
-      <label
-        ><input
-          type="checkbox"
-          (change)="changeDisabled($event)"
-        />Disabled</label
-      >
+      <label><input type="checkbox" (change)="changeDisabled($event)" />Disabled</label>
     </div>
   </div>
   <div class="row">
     <div class="col-6">
-      <label
-        ><input type="checkbox" [(ngModel)]="allowRuleset" />Allow
-        Ruleset</label
-      >
+      <label><input type="checkbox" [(ngModel)]="allowRuleset" />Allow Ruleset</label>
+    </div>
+    <div class="col-6">
+      <label><input type="checkbox" [(ngModel)]="allowCollapse" />Allow Collapse</label>
     </div>
     <div class="col-6">
       <label
-        ><input type="checkbox" [(ngModel)]="allowCollapse" />Allow
-        Collapse</label
-      >
-    </div>
-    <div class="col-6">
-      <label
-        ><input
-          type="checkbox"
-          [(ngModel)]="persistValueOnFieldChange"
-        />Persist Values on Field Change</label
+        ><input type="checkbox" [(ngModel)]="persistValueOnFieldChange" />Persist Values on Field
+        Change</label
       >
     </div>
   </div>
@@ -113,12 +91,7 @@
       <mat-icon ngClass="mat-arrow-icon">chevron_right</mat-icon>
     </ng-container>
     <ng-container *queryRemoveButton="let rule; let removeRule = removeRule">
-      <button
-        type="button"
-        mat-icon-button
-        color="accent"
-        (click)="removeRule(rule)"
-      >
+      <button type="button" mat-icon-button color="accent" (click)="removeRule(rule)">
         <mat-icon>remove</mat-icon>
       </button>
     </ng-container>
@@ -128,17 +101,11 @@
         [(ngModel)]="ruleset.condition"
         (ngModelChange)="onChange($event)"
       >
-        <mat-radio-button [style.padding.px]="10" value="and"
-          >And</mat-radio-button
-        >
-        <mat-radio-button [style.padding.px]="10" value="or"
-          >Or</mat-radio-button
-        >
+        <mat-radio-button [style.padding.px]="10" value="and">And</mat-radio-button>
+        <mat-radio-button [style.padding.px]="10" value="or">Or</mat-radio-button>
       </mat-radio-group>
     </ng-container>
-    <ng-container
-      *queryEntity="let rule; let entities = entities; let onChange = onChange"
-    >
+    <ng-container *queryEntity="let rule; let entities = entities; let onChange = onChange">
       <mat-form-field [appearance]="appearance" subscriptSizing="dynamic">
         <mat-select
           [(ngModel)]="rule.entity"
@@ -165,27 +132,14 @@
           (ngModelChange)="onChange($event, rule)"
           [hideSingleSelectionIndicator]="true"
         >
-          <mat-option
-            *ngFor="let field of getFields(rule.entity)"
-            [value]="field.value"
-          >
+          <mat-option *ngFor="let field of getFields(rule.entity)" [value]="field.value">
             {{ field.name }}
           </mat-option>
         </mat-select>
       </mat-form-field>
     </ng-container>
-    <ng-container
-      *queryOperator="
-        let rule;
-        let operators = operators;
-        let onChange = onChange
-      "
-    >
-      <mat-form-field
-        [style.width.px]="150"
-        [appearance]="appearance"
-        subscriptSizing="dynamic"
-      >
+    <ng-container *queryOperator="let rule; let operators = operators; let onChange = onChange">
+      <mat-form-field [style.width.px]="150" [appearance]="appearance" subscriptSizing="dynamic">
         <mat-select
           [(ngModel)]="rule.operator"
           (ngModelChange)="onChange(rule)"
@@ -197,13 +151,8 @@
         </mat-select>
       </mat-form-field>
     </ng-container>
-    <ng-container
-      *queryInput="let rule; type: 'boolean'; let onChange = onChange"
-    >
-      <mat-checkbox
-        [(ngModel)]="rule.value"
-        (ngModelChange)="onChange()"
-      ></mat-checkbox>
+    <ng-container *queryInput="let rule; type: 'boolean'; let onChange = onChange">
+      <mat-checkbox [(ngModel)]="rule.value" (ngModelChange)="onChange()"></mat-checkbox>
     </ng-container>
     <ng-container
       *queryInput="
@@ -239,18 +188,9 @@
       </mat-form-field>
     </ng-container>
     <ng-container
-      *queryInput="
-        let rule;
-        let options = options;
-        type: 'multiselect';
-        let onChange = onChange
-      "
+      *queryInput="let rule; let options = options; type: 'multiselect'; let onChange = onChange"
     >
-      <mat-form-field
-        [style.width.px]="300"
-        [appearance]="appearance"
-        subscriptSizing="dynamic"
-      >
+      <mat-form-field [style.width.px]="300" [appearance]="appearance" subscriptSizing="dynamic">
         <mat-select
           [(ngModel)]="rule.value"
           multiple
@@ -264,53 +204,24 @@
       </mat-form-field>
     </ng-container>
     <ng-container
-      *queryInput="
-        let rule;
-        let field = field;
-        type: 'number';
-        let onChange = onChange
-      "
+      *queryInput="let rule; let field = field; type: 'number'; let onChange = onChange"
     >
-      <mat-form-field
-        [style.width.px]="100"
-        [appearance]="appearance"
-        subscriptSizing="dynamic"
-      >
-        <input
-          matInput
-          [(ngModel)]="rule.value"
-          type="number"
-          (ngModelChange)="onChange()"
-        />
+      <mat-form-field [style.width.px]="100" [appearance]="appearance" subscriptSizing="dynamic">
+        <input matInput [(ngModel)]="rule.value" type="number" (ngModelChange)="onChange()" />
       </mat-form-field>
     </ng-container>
     <ng-container
-      *queryInput="
-        let rule;
-        let field = field;
-        type: 'string';
-        let onChange = onChange
-      "
+      *queryInput="let rule; let field = field; type: 'string'; let onChange = onChange"
     >
       <mat-form-field [appearance]="appearance" subscriptSizing="dynamic">
         <input matInput [(ngModel)]="rule.value" (ngModelChange)="onChange()" />
       </mat-form-field>
     </ng-container>
     <ng-container
-      *queryInput="
-        let rule;
-        let field = field;
-        type: 'textarea';
-        let onChange = onChange
-      "
+      *queryInput="let rule; let field = field; type: 'textarea'; let onChange = onChange"
     >
       <mat-form-field [appearance]="appearance" subscriptSizing="dynamic">
-        <textarea
-          matInput
-          [(ngModel)]="rule.value"
-          (ngModelChange)="onChange()"
-        >
-        </textarea>
+        <textarea matInput [(ngModel)]="rule.value" (ngModelChange)="onChange()"> </textarea>
       </mat-form-field>
     </ng-container>
   </query-builder>

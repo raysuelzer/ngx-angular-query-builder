@@ -6,26 +6,16 @@
   <a
     *ngIf="allowCollapse"
     (click)="toggleCollapse()"
-    [ngClass]="
-      getClassNames('arrowIconButton', data.collapsed ? 'collapsed' : '')
-    "
+    [ngClass]="getClassNames('arrowIconButton', data.collapsed ? 'collapsed' : '')"
   >
-    <ng-container
-      *ngIf="getArrowIconTemplate() as template; else defaultArrowIcon"
-    >
-      <ng-container
-        *ngTemplateOutlet="template; context: getArrowIconContext()"
-      ></ng-container>
+    <ng-container *ngIf="getArrowIconTemplate() as template; else defaultArrowIcon">
+      <ng-container *ngTemplateOutlet="template; context: getArrowIconContext()"></ng-container>
     </ng-container>
   </a>
 
-  <ng-container
-    *ngIf="getButtonGroupTemplate() as template; else defaultButtonGroup"
-  >
+  <ng-container *ngIf="getButtonGroupTemplate() as template; else defaultButtonGroup">
     <div [ngClass]="getClassNames('buttonGroup', 'rightAlign')">
-      <ng-container
-        *ngTemplateOutlet="template; context: getButtonGroupContext()"
-      ></ng-container>
+      <ng-container *ngTemplateOutlet="template; context: getButtonGroupContext()"></ng-container>
     </div>
   </ng-container>
 
@@ -61,12 +51,8 @@
     </div>
   </ng-template>
 
-  <ng-container
-    *ngIf="getSwitchGroupTemplate() as template; else defaultSwitchGroup"
-  >
-    <ng-container
-      *ngTemplateOutlet="template; context: getSwitchGroupContext()"
-    ></ng-container>
+  <ng-container *ngIf="getSwitchGroupTemplate() as template; else defaultSwitchGroup">
+    <ng-container *ngTemplateOutlet="template; context: getSwitchGroupContext()"></ng-container>
   </ng-container>
 
   <ng-template #defaultSwitchGroup>
@@ -80,9 +66,7 @@
           value="and"
           #andOption
         />
-        <label
-          (click)="changeCondition(andOption.value)"
-          [ngClass]="getClassNames('switchLabel')"
+        <label (click)="changeCondition(andOption.value)" [ngClass]="getClassNames('switchLabel')"
           >AND</label
         >
       </div>
@@ -95,9 +79,7 @@
           value="or"
           #orOption
         />
-        <label
-          (click)="changeCondition(orOption.value)"
-          [ngClass]="getClassNames('switchLabel')"
+        <label (click)="changeCondition(orOption.value)" [ngClass]="getClassNames('switchLabel')"
           >OR</label
         >
       </div>
@@ -115,24 +97,15 @@
       <ng-container
         *ngIf="{
           ruleset: !!rule.rules,
-          invalid:
-            !config.allowEmptyRulesets && rule.rules && rule.rules.length === 0
+          invalid: !config.allowEmptyRulesets && rule.rules && rule.rules.length === 0
         } as local"
       >
         <li [ngClass]="getQueryItemClassName(local)">
           <ng-container *ngIf="!local.ruleset">
-            <ng-container
-              *ngIf="
-                getRemoveButtonTemplate() as template;
-                else defaultRemoveButton
-              "
-            >
+            <ng-container *ngIf="getRemoveButtonTemplate() as template; else defaultRemoveButton">
               <div [ngClass]="getClassNames('buttonGroup', 'rightAlign')">
                 <ng-container
-                  *ngTemplateOutlet="
-                    template;
-                    context: getRemoveButtonContext(rule)
-                  "
+                  *ngTemplateOutlet="template; context: getRemoveButtonContext(rule)"
                 ></ng-container>
               </div>
             </ng-container>
@@ -151,9 +124,7 @@
             </ng-template>
 
             <div *ngIf="entities?.length" class="q-inline-block-display">
-              <ng-container
-                *ngIf="getEntityTemplate() as template; else defaultEntity"
-              >
+              <ng-container *ngIf="getEntityTemplate() as template; else defaultEntity">
                 <ng-container
                   *ngTemplateOutlet="template; context: getEntityContext(rule)"
                 ></ng-container>
@@ -168,19 +139,14 @@
                   (ngModelChange)="changeEntity($event, rule, i, data)"
                   [disabled]="disabled"
                 >
-                  <option
-                    *ngFor="let entity of entities"
-                    [ngValue]="entity.value"
-                  >
+                  <option *ngFor="let entity of entities" [ngValue]="entity.value">
                     {{ entity.name }}
                   </option>
                 </select>
               </div>
             </ng-template>
 
-            <ng-container
-              *ngIf="getFieldTemplate() as template; else defaultField"
-            >
+            <ng-container *ngIf="getFieldTemplate() as template; else defaultField">
               <ng-container
                 *ngTemplateOutlet="template; context: getFieldContext(rule)"
               ></ng-container>
@@ -194,19 +160,14 @@
                   (ngModelChange)="changeField($event, rule)"
                   [disabled]="disabled"
                 >
-                  <option
-                    *ngFor="let field of getFields(rule.entity)"
-                    [ngValue]="field.value"
-                  >
+                  <option *ngFor="let field of getFields(rule.entity)" [ngValue]="field.value">
                     {{ field.name }}
                   </option>
                 </select>
               </div>
             </ng-template>
 
-            <ng-container
-              *ngIf="getOperatorTemplate() as template; else defaultOperator"
-            >
+            <ng-container *ngIf="getOperatorTemplate() as template; else defaultOperator">
               <ng-container
                 *ngTemplateOutlet="template; context: getOperatorContext(rule)"
               ></ng-container>
@@ -220,19 +181,14 @@
                   (ngModelChange)="changeOperator(rule)"
                   [disabled]="disabled"
                 >
-                  <option
-                    *ngFor="let operator of getOperators(rule.field)"
-                    [ngValue]="operator"
-                  >
+                  <option *ngFor="let operator of getOperators(rule.field)" [ngValue]="operator">
                     {{ operator }}
                   </option>
                 </select>
               </div>
             </ng-template>
 
-            <ng-container
-              *ngIf="findTemplateForRule(rule) as template; else defaultInput"
-            >
+            <ng-container *ngIf="findTemplateForRule(rule) as template; else defaultInput">
               <ng-container
                 *ngTemplateOutlet="template; context: getInputContext(rule)"
               ></ng-container>
@@ -282,10 +238,7 @@
                   [disabled]="disabled"
                   *ngSwitchCase="'category'"
                 >
-                  <option
-                    *ngFor="let opt of getOptions(rule.field)"
-                    [ngValue]="opt.value"
-                  >
+                  <option *ngFor="let opt of getOptions(rule.field)" [ngValue]="opt.value">
                     {{ opt.name }}
                   </option>
                 </select>
@@ -297,10 +250,7 @@
                     [disabled]="disabled"
                     multiple
                   >
-                    <option
-                      *ngFor="let opt of getOptions(rule.field)"
-                      [ngValue]="opt.value"
-                    >
+                    <option *ngFor="let opt of getOptions(rule.field)" [ngValue]="opt.value">
                       {{ opt.name }}
                     </option>
                   </select>
@@ -323,26 +273,14 @@
             [parentTouchedCallback]="parentTouchedCallback || onTouchedCallback"
             [parentChangeCallback]="parentChangeCallback || onChangeCallback"
             [parentInputTemplates]="parentInputTemplates || inputTemplates"
-            [parentOperatorTemplate]="
-              parentOperatorTemplate || operatorTemplate
-            "
+            [parentOperatorTemplate]="parentOperatorTemplate || operatorTemplate"
             [parentFieldTemplate]="parentFieldTemplate || fieldTemplate"
             [parentEntityTemplate]="parentEntityTemplate || entityTemplate"
-            [parentSwitchGroupTemplate]="
-              parentSwitchGroupTemplate || switchGroupTemplate
-            "
-            [parentButtonGroupTemplate]="
-              parentButtonGroupTemplate || buttonGroupTemplate
-            "
-            [parentRemoveButtonTemplate]="
-              parentRemoveButtonTemplate || removeButtonTemplate
-            "
-            [parentEmptyWarningTemplate]="
-              parentEmptyWarningTemplate || emptyWarningTemplate
-            "
-            [parentArrowIconTemplate]="
-              parentArrowIconTemplate || arrowIconTemplate
-            "
+            [parentSwitchGroupTemplate]="parentSwitchGroupTemplate || switchGroupTemplate"
+            [parentButtonGroupTemplate]="parentButtonGroupTemplate || buttonGroupTemplate"
+            [parentRemoveButtonTemplate]="parentRemoveButtonTemplate || removeButtonTemplate"
+            [parentEmptyWarningTemplate]="parentEmptyWarningTemplate || emptyWarningTemplate"
+            [parentArrowIconTemplate]="parentArrowIconTemplate || arrowIconTemplate"
             [parentValue]="data"
             [classNames]="classNames"
             [config]="config"
@@ -353,12 +291,7 @@
           >
           </query-builder>
 
-          <ng-container
-            *ngIf="
-              getEmptyWarningTemplate() as template;
-              else defaultEmptyWarning
-            "
-          >
+          <ng-container *ngIf="getEmptyWarningTemplate() as template; else defaultEmptyWarning">
             <ng-container *ngIf="local.invalid">
               <ng-container
                 *ngTemplateOutlet="template; context: getEmptyWarningContext()"

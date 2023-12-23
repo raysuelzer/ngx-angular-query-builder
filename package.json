@@ -8,7 +8,8 @@
     "build-package": "ng build ngx-angular-query-builder",
     "watch-package": "ng build ngx-angular-query-builder --watch --configuration development",
     "watch-demo": "ng build demo --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "prettier": "npx prettier --write **"
   },
   "private": true,
   "dependencies": {
