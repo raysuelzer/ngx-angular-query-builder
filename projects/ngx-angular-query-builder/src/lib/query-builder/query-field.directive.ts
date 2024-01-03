@@ -1,6 +1,6 @@
-import { Directive, TemplateRef } from '@angular/core';
+import { Directive, TemplateRef } from "@angular/core";
 
-@Directive({selector: '[queryField]'})
+@Directive({ selector: "[queryField]" })
 export class QueryFieldDirective {
   constructor(public template: TemplateRef<any>) {}
 }
