@@ -15,6 +15,7 @@ Use the following versions depending upon your angular version
 - Angular 14 - Versions 14.x.x
 - Angular 15 - Versions 15.x.x
 - Angular 16 - Versions 16.x.x
+- Angular 17 - Versions 17.x.x
 
 # Examples
 
