@@ -40,3 +40,11 @@
 ### 16.0.0
 
 - Angular 16 version. (not fully tested, thanks mperezd)
+
+### 17.0.0
+  **Thank you to shivambindal93**
+ - Angular 17 Verison https://github.com/raysuelzer/ngx-angular-query-builder/pull/20
+ - Fixes Tests
+ - Scripts update, individual commands for demo and lib project
+ - Addition of prettier script, and prettier changes including .prettierrc and .prettierignore files
+ - Fixed the HostBinding method for query condition (fixes typo)
