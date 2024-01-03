@@ -6,6 +6,13 @@ The goal of this project is to enable Angular 12+ support for the original [angu
 
 This project uses code from https://github.com/designermanjeets/Angular-QueryBuilder a fork of https://github.com/zebzhao/Angular-QueryBuilder both developed under the MIT License.
 
+
+## Branches
+
+- Main should be the latest / highest version.
+- feature/* is where changes are staged before being merged
+- version/* are the different versions for the angular packages ie. version 16 is versions/16.x.x.
+
 # Versions
 
 Use the following versions depending upon your angular version
