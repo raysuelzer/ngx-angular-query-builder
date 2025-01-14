@@ -30,6 +30,7 @@ Use the following versions depending upon your angular version
 - Angular 16 - Versions 16.x.x
 - Angular 17 - Versions 17.x.x
 - Angular 18 - Versions 18.x.x
+- Angular 19 - Versions 19.x.x
 
 # Examples
 

@@ -53,3 +53,7 @@
 ### 18.0.0
 
 - Support angular 18 Thank you to mperezd
+
+### 19.0.0
+
+- Support angular 19
